@@ -6,3 +6,4 @@ const useAuth = () => {
     return data;
 }
 
+export default useAuth;
