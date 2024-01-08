@@ -1,33 +1,33 @@
 "use client";
-
 import appwriteService from "@/appwrite/config";
 import useAuth from "@/context/useAuth";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { FormEvent, useState } from "react";
 
+
 const Signup = () => {
-    const router = useRouter();
+
+    const router = useRouter()
     const [formData, setFormData] = useState({
         email: "",
         password: "",
         name: "",
-    });
-    const [error, setError] = useState("");
+    })
+    const [error, setError] = useState("")
 
-    const { setAuthStatus } = useAuth();
+    const { setAuthStatus } = useAuth()
 
     const create = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+        e.preventDefault()
         try {
             const userData = await appwriteService.createUserAccount(formData);
             if (userData) {
-                setAuthStatus(true);
-                router.push("/profile");
+                setAuthStatus(true)
+                router.push("/profile")
             }
         } catch (error: any) {
-            setError(error.message);
-
+            setError(error.message)
         }
     }
 
